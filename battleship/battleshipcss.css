@@ -1,0 +1,102 @@
+td.field {
+    height: 40px;
+    width: 40px;
+    display: inline-block;
+    padding: 0px;
+    border:1px solid black;
+}
+
+h1 {
+    text-shadow: 3px 2px violet;
+}
+
+table {
+    border-collapse: collapse;
+    margin:10px;
+}
+
+table, td{
+    /* border: 1px solid black; */
+}
+
+th {
+    background-color: violet;
+    padding: 1px;
+}
+
+#startBtn {
+    background: violet;
+    border-style: dotted solid;
+    height: 35px;
+    width: 100px;
+    margin-top: 45px;
+}
+#shipForm {
+    border:transparent;
+    background: violet;
+}
+
+#gridForm {
+    border:transparent;
+    background: violet;
+}
+
+
+
+body {
+    margin: auto;
+    width: 100%;
+    max-width: 1000px;
+}
+
+.gamefield {
+    width: 100%;
+    max-width: 600px;
+    margin:auto;
+    display: inline-block;
+
+}
+
+img {
+    width: 39px;
+}
+
+@media only screen and (max-width: 600px) {
+    #fields {
+        flex-direction: column;
+    }
+    #options {
+        flex-direction: column;
+        justify-content: center;
+
+    }
+
+    #startBtn {
+        align-self: center;
+    }
+
+  
+    td.field {
+        height: 30px;
+        width: 30px;
+        padding: 0px;
+        border:1px solid black;
+        
+    }
+
+    img {
+        width: 29px;
+    }
+
+
+
+    header {
+        text-align: center;
+    }
+
+    p {
+        text-align: center;
+    }
+
+
+}

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <meta charset="utf-8">
+        <meta name=viewport content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<title>Laura's Battleship Game</title>
+        <link rel="stylesheet" type="text/css" href="battleshipcss.css">
+        <script type="text/javascript" src="battlescript.js"></script>
+    </head>
+
+    <header>
+        <h1>Laura's I Battleship</h1>
+        <p id= "timeStarted">Time started:</p>
+        <p id="timer">Game time:</p>
+        <a href="../cgi-bin/results.py">Results</a>
+        
+    </header>
+
+	<body>        
+        
+        <div style="display: flex; justify-content: space-around" id = "options">
+            <div style="padding: 30px;">    
+                <p>What is your name?</p>
+                <input type="text" name="fname" id="nameInput">
+            </div>
+            
+            <div style="padding: 30px;">
+                <p> 1) Choose your grid size:</p>
+                <select id="gridForm">
+                    <option value="3">3x3</option> 
+                    <option value="4">4x4</option> 
+                    <option value="5">5x5</option> 
+                    <option value="6">6x6</option> 
+                    <option value="7">7x7</option> 
+                    <option value="8">8x8</option> 
+                    <option value="9">9x9</option> 
+                    <option value="10"> 10x10</option> 
+                </select>
+            </div>
+
+            <div style="padding: 30px;">
+                <p> 2) Choose the amount of ships:</p>
+                <select id="shipForm">
+                    <option>1</option> 
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                    <option>10</option>
+                </select>
+            </div>
+            <input type = "button" name = "shipBtn" value = "Start Game!" onclick="startGame()" id="startBtn"/>
+
+        </div>
+
+        <div style="display:flex; justify-content: space around;" id="fields">
+           
+            <table id="player"></table> 
+            
+            <table id="opponent"></table>
+        </div>
+       
+        <table border = 1 style="width:90%;text-align: center;color: black;background: white; border-color: blueviolet">
+            <thead>
+                <tr>
+                <th>game nr</th>
+                <th>board size</th>
+                <th>ships</th>
+                <th>your shots</th>
+                <th>opponent shots</th>
+                <th>time</th>
+                <th>result</th>
+            </tr>
+            </thead>
+            
+            <tbody id="scoreBoard">
+            </tbody>
+        </table>
+        
+	</body>
+</html>
