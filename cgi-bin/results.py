@@ -8,23 +8,32 @@ cgitb.enable()
 print ("Content-type: text/html")
 print()
 
-# print ("<html><head><title>test2.py</title></head><body><h1>Battleship results</h1><p>name1 oli ")
-title = "<html><head><title>server.py</title></head><body><h1>Battleship results</h1>"
-table = "<table border = '1'><tr><th>Player</th><th>Opponent</th><th>Game started</th><th>Your shots</th><th>opponent shots</th><th>Game time</th><tr>"
+html = """<html>
+<head>
+  <title>game results</title>
+</head>
+<body>
+  <h1>Battleship results</h1>
+  <form>
+    <input type=text name=q>
+    <input type=submit value='Search'>
+  </form>
+  <table border=1>
+    <tr>
+      <th><a href=?sort=0> Player</a></th>
+      <th><a href=?sort=1>Opponent</a></th>
+      <th><a href=?sort=2>Game started</a></th>
+      <th><a href=?sort=3>Your shots</a></th>
+      <th><a href=?sort=4>opponent shots</a></th>
+      <th><a href=?sort=5>Game time</a></th>
+    </tr>"""
 
-print(title + table)
+print(html)
 
 formdata = cgi.FieldStorage()
 
 
-
 if "name1" in formdata:
-  # print (formdata['name1'].value + "</td>")
-  # print("<td>" + formdata["name2"].value + "</td>")
-  # print("<td>" + formdata["timeStart"].value + "</td>")
-  # print("<td>" + formdata["playerShots"].value + "</td>")
-  # print("<td>" + formdata["opponentShots"].value + "</td>")
-  # print("<td>" + formdata["time"].value)
   print("ok")
 
   with open("table.txt", "a") as f:
@@ -38,8 +47,26 @@ if "name1" in formdata:
       f.write( '\n');
 else:
   with open("table.txt") as f:
+    listValues = []
+
+    def getKey(item):
+      if "sort" in formdata:
+        return item[int(formdata["sort"].value)]
+      else:
+        return item
+
     for line in f.readlines():
       values = (line.split(","))
+      if "q" in formdata:
+        if formdata["q"].value in line:
+          listValues.append(values)
+        else:
+          continue
+      else:
+        listValues.append(values)
+
+
+    for values in sorted(listValues, key = getKey):
       for i, value in enumerate(values):
         if not value.strip():
           continue
@@ -49,4 +76,4 @@ else:
         
       print("</tr>")
 
-print (".</tr></td></body></html>")
+print ("</tr></td></body></html>")
